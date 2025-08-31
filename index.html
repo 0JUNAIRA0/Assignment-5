@@ -31,15 +31,15 @@
         <h1 class="w-[135.72px] h-[44.69px] text-xl font-extrabold text-[#006747]">Emergency<br />Service</h1>
       </div>
       <div class="Navbar-right m-5">
-        <button class="btn rounded-full bg-[#41FF6B1A]">0
-          
+        <button class="btn rounded-full bg-[#41FF6B1A]">
+          <span id="heartcount">0</span>
           <img src="assets/heart.png" class="h-5 w-5" alt="" />
         </button>
         <button class="btn rounded-full bg-[#41FF6B1A]">
-          100
+          <span id="coincount">100</span>
           <img src="assets/coin.png" class="h-5 w-5" alt="" />
         </button>
-        <button class="btn rounded-full bg-[#00A63E] text-white">2 copy</button>
+        <button class="btn rounded-full bg-[#00A63E] text-white"><span id="copycount">0</span> copy</button>
       </div>
     </nav>
 
@@ -62,11 +62,11 @@
     </div>
 
     <!--Main Section Left-->
-    <div class="main-div p-[50px] flex gap-4 w-full">
+    <div class="main-div p-[50px] flex gap-4 w-full bg-[#41FF6B1A]">
       <div class="Card Section w-3/4 grid grid-cols-3 gap-4">
         <!--card 1-->
         <div
-          class="Card Section-1 p-[32px] shadow-2xl bg-white rounded-xl flex flex-col gap-4"
+          class="Card p-[32px] shadow-2xl bg-white rounded-xl flex flex-col gap-4"
         >
           <div class="flex justify-between">
             
@@ -83,7 +83,7 @@
 
             <div class="flex justify-center items-center">
               <button
-                class="btn btn-square border-none shadow-none bg-white w-[20px] h-[18px]"
+                class="heartbtn btn-square border-none shadow-none bg-white w-[20px] h-[18px]"
               >
                 <i class="fa-regular fa-heart w-6 h-6 text-gray-600"></i>
               </button>
@@ -104,14 +104,14 @@
 
           <div class="mt-8 w-full flex justify-between gap-2">
             <button
-              class="w-1/2 h-10 border-1 border-gray-300 rounded-lg flex justify-center items-center gap-2"
+              class="copybtn w-1/2 h-10 border-1 border-gray-300 rounded-lg flex justify-center items-center gap-2"
             >
                    <!-- <i class="w-4 h-4 rotate-90 text-gray-600 fa-regular fa-copy"></i>-->
               <img src="copy.png" alt="">      
                      Copy 
             </button>
             <button
-              class="bg-[#00A63E] hover:bg-green-900 text-white w-1/2 h-10 border-1 rounded-lg flex justify-center items-center gap-2"
+              class="callbtn bg-[#00A63E] hover:bg-green-900 text-white w-1/2 h-10 border-1 rounded-lg flex justify-center items-center gap-2"
             >
               <i class="fa fa-phone"></i>
               Call
@@ -120,7 +120,7 @@
         </div>
         <!--card 2-->
         <div
-          class="Card Section-1 p-[32px] shadow-2xl bg-white rounded-xl flex flex-col gap-4"
+          class="Card p-[32px] shadow-2xl bg-white rounded-xl flex flex-col gap-4"
         >
           <div class="flex justify-between">
             <div
@@ -131,7 +131,7 @@
 
             <div class="flex justify-center items-center">
               <button
-                class="btn btn-square border-none shadow-none bg-white w-[20px] h-[18px]"
+                class="heartbtn btn-square border-none shadow-none bg-white w-[20px] h-[18px]"
               >
                <i class="fa-regular fa-heart w-6 h-6 text-gray-600"></i>
               </button>
@@ -150,13 +150,13 @@
 
           <div class="mt-8 w-full flex justify-between gap-2">
             <button
-              class="w-1/2 h-10 border-1 border-gray-300 rounded-lg flex justify-center items-center gap-2"
+              class="copybtn w-1/2 h-10 border-1 border-gray-300 rounded-lg flex justify-center items-center gap-2"
             >
               <img src="copy.png" alt="">
               Copy
             </button>
             <button
-              class="bg-[#00A63E]  hover:bg-green-900 text-white w-1/2 h-10 border-1 rounded-lg flex justify-center items-center gap-2"
+              class="callbtn bg-[#00A63E]  hover:bg-green-900 text-white w-1/2 h-10 border-1 rounded-lg flex justify-center items-center gap-2"
             >
               <i class="fa fa-phone"></i>
               Call
@@ -165,7 +165,7 @@
         </div>
         <!--card 3-->
         <div
-          class="Card Section-1 p-[32px] shadow-2xl bg-white rounded-xl flex flex-col gap-4"
+          class="Card p-[32px] shadow-2xl bg-white rounded-xl flex flex-col gap-4"
         >
           <div class="flex justify-between">
             <div
@@ -176,7 +176,7 @@
 
             <div class="flex justify-center items-center">
               <button
-                class="btn btn-square border-none shadow-none bg-white w-[20px] h-[18px]"
+                class="heartbtn btn-square border-none shadow-none bg-white w-[20px] h-[18px]"
               >
                <i class="fa-regular fa-heart w-6 h-6 text-gray-600"></i>
               </button>
@@ -195,13 +195,13 @@
 
           <div class="mt-8 w-full flex justify-between gap-2">
             <button
-              class="w-1/2 h-10 border-1 border-gray-300 rounded-lg flex justify-center items-center gap-2"
+              class="copybtn w-1/2 h-10 border-1 border-gray-300 rounded-lg flex justify-center items-center gap-2"
             >
               <img src="copy.png" alt="">
               Copy
             </button>
             <button
-              class="bg-[#00A63E]  hover:bg-green-900 text-white w-1/2 h-10 border-1 rounded-lg flex justify-center items-center gap-2"
+              class="callbtn bg-[#00A63E]  hover:bg-green-900 text-white w-1/2 h-10 border-1 rounded-lg flex justify-center items-center gap-2"
             >
               <i class="fa fa-phone"></i>
               Call
@@ -210,7 +210,7 @@
         </div>
         <!--card 4-->
         <div
-          class="Card Section-1 p-[32px] shadow-2xl bg-white rounded-xl flex flex-col gap-4"
+          class="Card p-[32px] shadow-2xl bg-white rounded-xl flex flex-col gap-4"
         >
           <div class="flex justify-between">
             <div
@@ -221,7 +221,7 @@
 
             <div class="flex justify-center items-center">
               <button
-                class="btn btn-square border-none shadow-none bg-white w-[20px] h-[18px]"
+                class="heartbtn btn-square border-none shadow-none bg-white w-[20px] h-[18px]"
               >
                 <i class="fa-regular fa-heart w-6 h-6 text-gray-600"></i>
               </button>
@@ -240,13 +240,13 @@
 
           <div class="mt-8 w-full flex justify-between gap-2">
             <button
-              class="w-1/2 h-10 border-1 border-gray-300 rounded-lg flex justify-center items-center gap-2"
+              class="copybtn w-1/2 h-10 border-1 border-gray-300 rounded-lg flex justify-center items-center gap-2"
             >
               <img src="copy.png" alt="">
               Copy
             </button>
             <button
-              class="bg-[#00A63E]  hover:bg-green-900 text-white w-1/2 h-10 border-1 rounded-lg flex justify-center items-center gap-2"
+              class="callbtn bg-[#00A63E]  hover:bg-green-900 text-white w-1/2 h-10 border-1 rounded-lg flex justify-center items-center gap-2"
             >
               <i class="fa fa-phone"></i>
               Call
@@ -255,7 +255,7 @@
         </div>
         <!--card 5-->
         <div
-          class="Card Section-1 p-[32px] shadow-2xl bg-white rounded-xl flex flex-col gap-4"
+          class="Card p-[32px] shadow-2xl bg-white rounded-xl flex flex-col gap-4"
         >
           <div class="flex justify-between">
             <div
@@ -266,7 +266,7 @@
 
             <div class="flex justify-center items-center">
               <button
-                class="btn btn-square border-none shadow-none bg-white w-[20px] h-[18px]"
+                class="heartbtn btn-square border-none shadow-none bg-white w-[20px] h-[18px]"
               >
                 <i class="fa-regular fa-heart w-6 h-6 text-gray-600"></i>
               </button>
@@ -287,13 +287,13 @@
 
           <div class="mt-8 w-full flex justify-between gap-2">
             <button
-              class="w-1/2 h-10 border-1 border-gray-300 rounded-lg flex justify-center items-center gap-2"
+              class="copybtn w-1/2 h-10 border-1 border-gray-300 rounded-lg flex justify-center items-center gap-2"
             >
               <img src="copy.png" alt="">
               Copy
             </button>
             <button
-              class="bg-[#00A63E]  hover:bg-green-900 text-white w-1/2 h-10 border-1 rounded-lg flex justify-center items-center gap-2"
+              class="callbtn bg-[#00A63E]  hover:bg-green-900 text-white w-1/2 h-10 border-1 rounded-lg flex justify-center items-center gap-2"
             >
               <i class="fa fa-phone"></i>
               Call
@@ -302,7 +302,7 @@
         </div>
         <!--card 6-->
         <div
-          class="Card Section-1 p-[32px] shadow-2xl bg-white rounded-xl flex flex-col gap-4"
+          class="Card p-[32px] shadow-2xl bg-white rounded-xl flex flex-col gap-4"
         >
           <div class="flex justify-between">
             <div
@@ -313,7 +313,7 @@
 
             <div class="flex justify-center items-center">
               <button
-                class="btn btn-square border-none shadow-none bg-white w-[20px] h-[18px]"
+                class="heartbtn btn-square border-none shadow-none bg-white w-[20px] h-[18px]"
               >
                <i class="fa-regular fa-heart w-6 h-6 text-gray-600"></i>
               </button>
@@ -332,13 +332,13 @@
 
           <div class="mt-8 w-full flex justify-between gap-2">
             <button
-              class="w-1/2 h-10 border-1 border-gray-300 rounded-lg flex justify-center items-center gap-2"
+              class="copybtn w-1/2 h-10 border-1 border-gray-300 rounded-lg flex justify-center items-center gap-2"
             >
               <img src="copy.png" alt="">
               Copy
             </button>
             <button
-              class="bg-[#00A63E]  hover:bg-green-900 text-white w-1/2 h-10 border-1 rounded-lg flex justify-center items-center gap-2"
+              class="callbtn bg-[#00A63E]  hover:bg-green-900 text-white w-1/2 h-10 border-1 rounded-lg flex justify-center items-center gap-2"
             >
               <i class="fa fa-phone"></i>
               Call
@@ -347,7 +347,7 @@
         </div>
         <!--card 7-->
         <div
-          class="Card Section-1 p-[32px] shadow-2xl bg-white rounded-xl flex flex-col gap-4"
+          class="Card p-[32px] shadow-2xl bg-white rounded-xl flex flex-col gap-4"
         >
           <div class="flex justify-between">
             <div
@@ -358,7 +358,7 @@
 
             <div class="flex justify-center items-center">
               <button
-                class="btn btn-square border-none shadow-none bg-white w-[20px] h-[18px]"
+                class="heartbtn btn-square border-none shadow-none bg-white w-[20px] h-[18px]"
               >
                 <i class="fa-regular fa-heart w-6 h-6 text-gray-600"></i>
               </button>
@@ -379,13 +379,13 @@
 
           <div class="mt-8 w-full flex justify-between gap-2">
             <button
-              class="w-1/2 h-10 border-1 border-gray-300 rounded-lg flex justify-center items-center gap-2"
+              class="copybtn w-1/2 h-10 border-1 border-gray-300 rounded-lg flex justify-center items-center gap-2"
             >
               <img src="copy.png" alt="">
               Copy
             </button>
             <button
-              class="bg-[#00A63E]  hover:bg-green-900 text-white w-1/2 h-10 border-1 rounded-lg flex justify-center items-center gap-2"
+              class="callbtn bg-[#00A63E]  hover:bg-green-900 text-white w-1/2 h-10 border-1 rounded-lg flex justify-center items-center gap-2"
             >
               <i class="fa fa-phone"></i>
               Call
@@ -394,7 +394,7 @@
         </div>
         <!--card 8-->
         <div
-          class="Card Section-1 p-[32px] shadow-2xl bg-white rounded-xl flex flex-col gap-4"
+          class="Card p-[32px] shadow-2xl bg-white rounded-xl flex flex-col gap-4"
         >
           <div class="flex justify-between">
             <div
@@ -405,7 +405,7 @@
 
             <div class="flex justify-center items-center">
               <button
-                class=" hartAction btn btn-square border-none shadow-none bg-white w-[20px] h-[18px]"
+                class=" heartbtn btn-square border-none shadow-none bg-white w-[20px] h-[18px]"
               >
                 <i class="fa-regular fa-heart w-6 h-6 text-gray-600"></i>
               </button>
@@ -424,13 +424,13 @@
 
           <div class="mt-8 w-full flex justify-between gap-2">
             <button
-              class="w-1/2 h-10 border-1 border-gray-300 rounded-lg flex justify-center items-center gap-2"
+              class="copybtn w-1/2 h-10 border-1 border-gray-300 rounded-lg flex justify-center items-center gap-2"
             >
               <img src="copy.png" alt="">
               Copy
             </button>
             <button
-              class="bg-[#00A63E]  hover:bg-green-900 text-white w-1/2 h-10 border-1 rounded-lg flex justify-center items-center gap-2"
+              class="callbtn bg-[#00A63E]  hover:bg-green-900 text-white w-1/2 h-10 border-1 rounded-lg flex justify-center items-center gap-2"
             >
               <i class="fa fa-phone"></i>
               Call
@@ -439,7 +439,7 @@
         </div>
         <!--card 9-->
         <div
-          class="Card Section-1 p-[32px] shadow-2xl bg-white rounded-xl flex flex-col gap-4"
+          class="Card p-[32px] shadow-2xl bg-white rounded-xl flex flex-col gap-4"
         >
           <div class="flex justify-between">
             <div
@@ -450,7 +450,7 @@
 
             <div class="flex justify-center items-center">
               <button
-                class=" hartAction btn btn-square border-none shadow-none bg-white w-[20px] h-[18px]"
+                class=" heartbtn btn-square border-none shadow-none bg-white w-[20px] h-[18px]"
               >
                 <i class="fa-regular fa-heart w-6 h-6 text-gray-600"></i>
               </button>
@@ -471,13 +471,13 @@
 
           <div class="mt-8 w-full flex justify-between gap-2">
             <button
-              class="w-1/2 h-10 border-1 border-gray-300 rounded-lg flex justify-center items-center gap-2"
+              class="copybtn w-1/2 h-10 border-1 border-gray-300 rounded-lg flex justify-center items-center gap-2"
             >
               <img src="copy.png" alt="">
               Copy
             </button>
             <button
-              class="bg-[#00A63E]  hover:bg-green-900 text-white w-1/2 h-10 border-1 rounded-lg flex justify-center items-center gap-2"
+              class="callbtn bg-[#00A63E]  hover:bg-green-900 text-white w-1/2 h-10 border-1 rounded-lg flex justify-center items-center gap-2"
             >
               <i class="fa fa-phone"></i>
               Call
@@ -487,58 +487,31 @@
       </div>
 
       <!--Main Section right-->
-      <div class="right-div w-1/4 bg-white p-6 rounded-xl">
-        <div class="p-2 flex justify-between items-center  h-[52px]">
-          <div class="flex gap-2">
-            <img src="clock.png" class="h-6 w-6 " alt="" />
-            <h1>Call History</h1>
+       <aside class="w-full lg:w-1/4 bg-white p-4 md:p-6 rounded-xl h-fit">
+          <div class="flex justify-between items-center mb-3">
+            <div class="flex items-center gap-2">
+              <img
+                src="clock.png"
+                class="h-6 w-6"
+                alt="clock"
+              />
+              <h2 class="font-semibold">Call History</h2>
+            </div>
+            <button
+              id="clearbtn"
+              class="btn btn-sm bg-[#00A63E] hover:bg-green-900 rounded-full text-white"
+            >
+              Clear
+            </button>
           </div>
-          <button
-            class="bg-[#00A63E] rounded-full h-[35px] w-[70px] text-white"
-          >
-            Clear
-          </button>
-        </div>
-
-           <div class="flex flex-col gap-2">
-          <!--1 no-->
-          <div
-            class="flex justify-between items-center bg-[#FAFAFA] p-2 rounded-2xl"
-          >
-            <div>
-              <h1>Fire Service Number</h1>
-              <p>999</p>
-            </div>
-            <div>
-              <p>11:36:58 AM</p>
-            </div>
+          <div id="historyList" class="flex flex-col gap-2">
+           
           </div>
-          <!--2 no-->
-          <div
-            class="flex justify-between items-center bg-[#FAFAFA] p-2 rounded-2xl"
-          >
-            <div>
-              <h1>National Emergency Number</h1>
-              <p>999</p>
-            </div>
-            <div>
-              <p>11:36:58 AM</p>
-            </div>
-          </div>
-          <!--3 no-->
-          <div
-            class="flex justify-between items-center bg-[#FAFAFA] p-2 rounded-2xl"
-          >
-            <div>
-              <h1>Fire Service Number</h1>
-              <p>999</p>
-            </div>
-            <div>
-              <p>11:36:58 AM</p>
-            </div>
-          </div>
-        </div>
-      </div>
+        </aside>
     </div>
+
+    <!-- js -->
+
+    <script src="js/script.js"></script>
 </body>
 </html>
