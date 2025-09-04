@@ -1,118 +1,192 @@
+'use strict';
 
-let coins = 100;
-let favSet = new Set();
-let copyCount = 0;
+document.addEventListener('DOMContentLoaded', () => {
+  const heartCountEl = document.getElementById('heartcount');
+  const coinCountEl = document.getElementById('coincount');
+  const copyCountEl = document.getElementById('copycount');
+  const historyListEl = document.getElementById('historyList');
+  const clearBtn = document.getElementById('clearbtn');
 
-const heartCountEl = document.getElementById('heartcount');
-const coinCountEl  = document.getElementById('coincount');
-const copycountEl = document.getElementById('copycount');
-const historyList  = document.getElementById('historyList');
-const clearBtn = document.getElementById('clearbtn');
+  // LocalStorage state
+  let hearts = parseInt(localStorage.getItem('es_hearts')) || 0;
+  let coins = parseInt(localStorage.getItem('es_coins')) || 100;
+  let copies = parseInt(localStorage.getItem('es_copies')) || 0;
+  let callHistory = JSON.parse(localStorage.getItem('es_callHistory')) || [];
+  const CALL_COST = 20;
 
-
-function formatTime() {
-  const d = new Date();
-  return d.toLocaleString('en-GB', {
-    timeZone: 'Asia/Dhaka',
-    year: 'numeric',
-    month: 'short',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: true
-  });
-}
-
-function addHistory(service) {
-  const row = document.createElement('div');
-  row.className = "flex justify-between items-center bg-[#FAFAFA] p-3 rounded-2xl";
-  row.innerHTML = `
-    <div>
-      <h3 class="font-medium">${service.name}</h3>
-      <p class="text-sm text-gray-600">${service.number}</p>
-    </div>
-    <div class="text-sm text-gray-600">${formatTime()}</div>
-  `;
-  historyList.prepend(row);
-}
-
-
-async function copyTextToClipboard(text) {
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    try { await navigator.clipboard.writeText(text); return true; } catch(e) {}
-  }
-  try {
-    const ta = document.createElement('textarea');
-    ta.value = text;
-    ta.setAttribute('readonly','');
-    ta.style.position = 'absolute';
-    ta.style.left = '-9999px';
-    document.body.appendChild(ta);
-    ta.select();
-    const ok = document.execCommand('copy');
-    document.body.removeChild(ta);
-    return ok;
-  } catch(e){ return false; }
-}
-
-
-document.addEventListener('click', async (e) => {
-  const card = e.target.closest('div.card');
-
-
-  if (e.target === clearbtn) {
-    historyList.innerHTML = '';
-    return;
-  }
-  if (!card) return;
-
-  const svc = JSON.parse(card.getAttribute('data-service'));
-  const cards = Array.from(document.querySelectorAll('div.card'));
-  const idx = cards.indexOf(card);
-
-  if (e.target.closest('.heart-btn')) {
-    const icon = card.querySelector('.heart-icon');
-    if (favSet.has(idx)) {
-      favSet.delete(idx);
-      icon.src = 'assets/heart.png'; 
-    } else {
-      favSet.add(idx);
-      icon.src = 'assets/heart-3510.png'; 
-    }
-    favCountEl.textContent = favSet.size;
-    return;
+  // Save state (without heart icon state)
+  function saveState() {
+    localStorage.setItem('es_hearts', hearts);
+    localStorage.setItem('es_coins', coins);
+    localStorage.setItem('es_copies', copies);
+    localStorage.setItem('es_callHistory', JSON.stringify(callHistory));
   }
 
-  if (e.target.closest('.copy-btn')) {
-    const ok = await copyTextToClipboard(svc.number);
-    if (ok) {
-      copyCount += 1;
-      copyCountEl.textContent = copyCount;
-      alert(`Copied hotline number: ${svc.number}`);
-    } else {
-      alert('Copy failed. Try selecting and copying manually.');
-    }
-    return;
+  function updateCountsUI() {
+    heartCountEl.textContent = hearts;
+    coinCountEl.textContent = coins;
+    copyCountEl.textContent = copies;
   }
 
-  if (e.target.closest('.call-btn')) {
-    if (coins < 20) {
-      alert('Not enough coins to place a call. You need at least 20 coins.');
+  function formatTime(date = new Date()) {
+    return date.toLocaleString();
+  }
+
+  function renderHistory() {
+    historyListEl.innerHTML = '';
+
+    if (!callHistory || callHistory.length === 0) {
+      const empty = document.createElement('div');
+      empty.className = 'text-gray-400 text-sm';
+      empty.textContent = 'No call history yet.';
+      historyListEl.appendChild(empty);
       return;
     }
-    alert(`Calling ${svc.name} at ${svc.number}...`);
-    coins -= 20;
-    coinCountEl.textContent = coins;
-    addHistory(svc);
-    return;
-  }
-});
 
-document.addEventListener('keydown', (e) => {
-  if ((e.key === 'Enter' || e.key === ' ') && e.target.closest('.copy-btn, .call-btn, .heart-btn')) {
-    e.preventDefault();
-    e.target.click();
-  }
-});
+    callHistory.forEach((entry) => {
+      const row = document.createElement('div');
+      row.className = 'flex justify-between items-center bg-gray-50 p-3 rounded-lg';
 
+      const left = document.createElement('div');
+      left.className = 'flex flex-col';
+
+      const nameEl = document.createElement('div');
+      nameEl.className = 'font-semibold';
+      nameEl.textContent = entry.name;
+
+      const numEl = document.createElement('div');
+      numEl.className = 'text-sm text-gray-500';
+      numEl.textContent = entry.number;
+
+      left.appendChild(nameEl);
+      left.appendChild(numEl);
+
+      const right = document.createElement('div');
+      right.className = 'text-xs text-gray-400 text-right';
+      right.textContent = entry.time;
+
+      row.appendChild(left);
+      row.appendChild(right);
+
+      historyListEl.appendChild(row);
+    });
+  }
+
+  
+  updateCountsUI();
+  renderHistory();
+
+
+  document.querySelectorAll('.heartbtn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const img = btn.querySelector('img');
+      if (!img) return;
+
+      const isActive = img.dataset.active === "true";
+
+      if (!isActive) {
+        img.src = "assets/heart.png"; 
+        img.dataset.active = "true";
+        hearts = hearts + 1;
+      } else {
+        img.src = "assets/heart-outline.png"; 
+        img.dataset.active = "false";
+        hearts = Math.max(0, hearts - 1);
+      }
+
+      updateCountsUI();
+      // 
+    });
+  });
+
+  
+  async function copyText(text) {
+    if (!text) return false;
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  document.querySelectorAll('.copybtn').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const card = btn.closest('.Card');
+      if (!card) return;
+      const numberEl = card.querySelector('h1.text-3xl');
+      const number = numberEl ? numberEl.textContent.trim() : '';
+
+      const ok = await copyText(number);
+
+      if (ok) {
+        copies = copies + 1;
+        updateCountsUI();
+        saveState();
+        alert(`Copied ${number} to clipboard`);
+      } else {
+        alert('Unable to copy to clipboard.');
+      }
+    });
+  });
+
+ 
+  document.querySelectorAll('.callbtn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('.Card');
+      if (!card) return;
+      const titleEl = card.querySelector('h1.text-xl');
+      const numberEl = card.querySelector('h1.text-3xl');
+      const serviceName = titleEl ? titleEl.textContent.trim() : 'Service';
+      const number = numberEl ? numberEl.textContent.trim() : '';
+
+      if (coins < CALL_COST) {
+        alert(`Not enough coins to call ${serviceName}. You have ${coins} coins. Each call costs ${CALL_COST} coins.`);
+        return;
+      }
+
+      alert(`Calling ${serviceName} at ${number}...`);
+
+      coins = coins - CALL_COST;
+      if (coins < 0) coins = 0;
+      updateCountsUI();
+
+      const entry = {
+        name: serviceName,
+        number: number,
+        time: formatTime(new Date())
+      };
+
+      callHistory.unshift(entry);
+
+      saveState();
+      renderHistory();
+    });
+  });
+
+  
+  clearBtn.addEventListener('click', () => {
+    if (!confirm('Are you sure you want to clear the call history?')) return;
+    callHistory = [];
+    saveState();
+    renderHistory();
+  });
+
+  
+  window.__es_debug = {
+    getState: () => ({ hearts, coins, copies, callHistory }),
+    reset: () => {
+      hearts = 0; coins = 100; copies = 0; callHistory = [];
+      saveState(); updateCountsUI(); renderHistory();
+    }
+  };
+});
